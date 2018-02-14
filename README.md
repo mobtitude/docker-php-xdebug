@@ -1,6 +1,7 @@
-docker-php-xdebug
-=================
+About this repo
+===============
 This repository contains Dockerfiles to build PHP images with `xdebug` installed and configured to run with modern IDEs like phpStorm.
+
 Docker images are based on official Docker PHP builds that are available in Docker Store: <https://store.docker.com/images/php>
 
 Why `docker-php-xdebug`?
@@ -9,11 +10,11 @@ Official PHP images are great, however they don't have `xdebug` plugin installed
 
 Images from this repository are the solution for this issue, since they have installed and configured `xdebug` plugin.
 
-The only difference from official Docker PHP images is that, the `xdebug` plugin is installed, configured and ready to use with modern IDEs like phpStorm.
+The only difference from the official Docker PHP images is that, the `xdebug` plugin is installed, configured and ready to use with modern IDEs like phpStorm.
 
 Use from Docker Registry
 --------------------------
-Since all images are based on official Docker PHP images, please check [official documentation](https://store.docker.com/images/php) how to use them from Docker Registry.
+Since all images are based on official Docker PHP images, please check [official Docker PHP images documentation](https://store.docker.com/images/php) how to use them from Docker Registry.
 
 The only difference is that, instead of downloading official Docker PHP image, you have to use one of the images listed below.
 
@@ -77,3 +78,10 @@ You can overwrite `xdebug` configuration in the following ways:
 2. By replacing specific PHP options with `-d` when starting php script in container: 
 	`php -dxdebug.remote_port=9050 -dxdebug.profiler_enable=1` 
 3. By replacing specific PHP options in VirtualHost or `.htaccess` file when running web application in Apache as explained in PHP docs: http://php.net/manual/en/configuration.changes.php
+
+FAQ
+---
+Q: Why images don't have specific PHP version like `7.2.2` but only major and minor version `7.2`?
+
+A: It is because images have always the newest possible patch version of PHP based on official Docker PHP images.
+For example for `mobtitude/php-xdebug:7.2-apache` you can expect that it is always the newest PHP version available in official Docker Registry and it is automatically updated when official PHP Docker images are updated. The newest possible PHP version at the time of writing is 7.2.2, but will be automatically updated to 7.2.3 when official PHP Docker images are updated.
