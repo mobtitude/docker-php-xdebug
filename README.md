@@ -83,5 +83,5 @@ FAQ
 ---
 Q: Why images don't have specific PHP version like `7.2.2` but only major and minor version `7.2`?
 
-A: It is because images have always the newest possible patch version of PHP based on official Docker PHP images.
+A: It is because images in this repo have always the newest possible patch version of PHP based on official Docker PHP images.
 For example for `mobtitude/php-xdebug:7.2-apache` you can expect that it is always the newest PHP version available in official Docker Registry and it is automatically updated when official PHP Docker images are updated. The newest possible PHP version at the time of writing is 7.2.2, but will be automatically updated to 7.2.3 when official PHP Docker images are updated.
