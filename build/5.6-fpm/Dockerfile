@@ -1,6 +1,15 @@
 FROM php:5.6-fpm
 MAINTAINER Przemek Szalko <przemek@mobtitude.com>
 
+# php intl extension
+RUN apt-get update \
+    && apt-get install -y libicu-dev \
+    && docker-php-ext-install intl \
+    && apt-get remove -y libicu-dev \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN pecl channel-update pecl.php.net \
 	&& pecl install xdebug-2.5.5 \
 	&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
