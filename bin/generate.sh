@@ -5,7 +5,8 @@
 #
 
 # PHP Versions that will be generated 
-php_versions=( "7.4" "7.2" "7.1" "7.0" "5.6")
+#php_versions=( "8.0" "7.4" "7.2" "7.1" "7.0" "5.6")
+php_versions=( "8.0" "7.4" "7.2" )
 
 # PHP variants that will be generated for each PHP version
 # final source image will be generated as follow: php:7.2-cli, php:7-2-apache and php:7.2-fpm
@@ -15,6 +16,7 @@ php_docker_suffix=( "cli" "apache" "fpm" )
 # PHP_VERSION => XDEBUG_VERSION
 declare -A xdebug_versions
 xdebug_versions=( 
+    ["8.0"]="xdebug-3.0.4"
 	["7.4"]="xdebug-2.9.1"
 	["7.2"]="xdebug-2.6.0"
 	["7.1"]="xdebug-2.6.0"

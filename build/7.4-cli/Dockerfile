@@ -5,6 +5,8 @@ MAINTAINER Przemek Szalko <przemek@mobtitude.com>
 RUN apt-get update \
     && apt-get install -y libicu-dev \
     && docker-php-ext-install intl \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-source delete \
     && apt-get remove -y libicu-dev \
     && apt-get autoremove -y \
     && apt-get clean \
