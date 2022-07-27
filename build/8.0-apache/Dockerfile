@@ -9,9 +9,7 @@ RUN apt-get update \
     && docker-php-ext-install zip \
     && docker-php-source delete \
     && apt-get remove -y libicu-dev libzip-dev \
-    && apt-get autoremove -y \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get autoremove -y
 
 RUN pecl channel-update pecl.php.net \
 	&& pecl install xdebug-3.1.3 \
