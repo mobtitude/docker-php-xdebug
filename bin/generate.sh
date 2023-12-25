@@ -39,9 +39,10 @@ for php_version in "${php_versions[@]}"; do
 
 		base_image="php:${php_version}-${php_suffix}"
 		xdebug_version="${xdebug_versions[${php_version}]}"
+		xdebug_major_version=`echo "${xdebug_version}" | sed 's/xdebug-\([1-9][0-9]\{0,\}\)\..*/\1/'`
 
 		mkdir -p "${target_dir}"
-		cp ./src/xdebug.ini "${target_dir}/xdebug.ini"
+		cp "./src/xdebug-${xdebug_major_version}.ini" "${target_dir}/xdebug.ini"
 
 		# shellcheck disable=SC2002
 		cat ./src/Dockerfile \
