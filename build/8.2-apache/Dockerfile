@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.2-apache
 MAINTAINER Przemek Szalko <przemek@mobtitude.com>
 
 # php intl extension
@@ -13,7 +13,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pecl channel-update pecl.php.net \
-	&& pecl install xdebug-3.1.3 \
+	&& pecl install xdebug-3.3.1 \
 	&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini

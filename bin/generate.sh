@@ -6,7 +6,7 @@
 
 # PHP Versions that will be generated
 #php_versions=( "8.0" "7.4" "7.2" "7.1" "7.0" "5.6")
-php_versions=( "8.1" "8.0" "7.4" "7.2" )
+php_versions=( "8.2" "8.1" "8.0" "7.4" "7.2" )
 
 # PHP variants that will be generated for each PHP version
 # final source image will be generated as follow: php:7.2-cli, php:7-2-apache and php:7.2-fpm
@@ -16,6 +16,7 @@ php_docker_suffix=( "cli" "apache" "fpm" )
 # PHP_VERSION => XDEBUG_VERSION
 declare -A xdebug_versions
 xdebug_versions=(
+    ["8.2"]="xdebug-3.3.1"
     ["8.1"]="xdebug-3.1.3"
     ["8.0"]="xdebug-3.1.3"
     ["7.4"]="xdebug-2.9.1"
@@ -38,9 +39,10 @@ for php_version in "${php_versions[@]}"; do
 
 		base_image="php:${php_version}-${php_suffix}"
 		xdebug_version="${xdebug_versions[${php_version}]}"
+		xdebug_major_version=`echo "${xdebug_version}" | sed 's/xdebug-\([1-9][0-9]\{0,\}\)\..*/\1/'`
 
 		mkdir -p "${target_dir}"
-		cp ./src/xdebug.ini "${target_dir}/xdebug.ini"
+		cp "./src/xdebug-${xdebug_major_version}.ini" "${target_dir}/xdebug.ini"
 
 		# shellcheck disable=SC2002
 		cat ./src/Dockerfile \
