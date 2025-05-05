@@ -32,7 +32,15 @@ Supported tags:
 * mobtitude/php-xdebug:7.2-apache
 * mobtitude/php-xdebug:7.2-cli
 * mobtitude/php-xdebug:7.2-fpm
-
+* mobtitude/php-xdebug:8.1-apache
+* mobtitude/php-xdebug:8.1-cli
+* mobtitude/php-xdebug:8.1-fpm
+* mobtitude/php-xdebug:8.2-apache
+* mobtitude/php-xdebug:8.2-cli
+* mobtitude/php-xdebug:8.2-fpm
+* mobtitude/php-xdebug:8.3-apache
+* mobtitude/php-xdebug:8.3-cli
+* mobtitude/php-xdebug:8.3-fpm
 
 Build from source
 -------------------
