@@ -22,16 +22,18 @@ text_bold=$(tput bold)
 text_red=$(tput setaf 1)
 text_normal=$(tput sgr0)
 
-# Summary arrays
-build_failed=()
-build_done=()
-
 # Loop through all available directories in ./build
 for i in ./build/*/; do
 	version=$(basename "$i");
 	image="${image_name}:${version}"
 	
-	echo "${text_bold}* Building ${image} ${text_normal}"
+	echo "${text_bold}* Testing ${image} ${text_normal}"
+
+	docker run \
+	  --volume ./scripts/test-xdebug-install.php:/app/test-xdebug-install.php \
+	  --workdir /app \
+	  $image
+
 	
 	# Builds image and check for return code
 	if docker build --pull -t "${image}" "./build/${version}"; then
@@ -42,23 +44,3 @@ for i in ./build/*/; do
 	fi
 done
 
-
-# Prints summary for successful builds
-if [ "${#build_done[@]}" -gt 0 ]; then
-	echo "${text_bold}"
-	echo "Docker has successfully built the following images:${text_normal}"
-	for img in "${build_done[@]}"; do
-		echo "* ${img}"
-	done
-	echo -n "${text_normal}"
-fi
-
-# Prints summary for failed builds
-if [ "${#build_failed[@]}" -gt 0 ]; then
-	echo "${text_red}"
-	echo "Docker failed when building the following images:"
-	for img in "${build_failed[@]}"; do
-		echo "${text_red}* ${img}${text_normal}"
-	done
-	exit 1
-fi

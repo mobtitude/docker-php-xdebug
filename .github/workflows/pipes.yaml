@@ -1,0 +1,49 @@
+name: Pipes
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'bin/**'
+      - 'build/**'
+      - 'scripts/**'
+      - 'src/**'
+    types:
+      - labeled
+      - unlabeled
+      - opened
+      - synchronize
+  push:
+    branches:
+      - master
+    paths:
+      - 'bin/**'
+      - 'build/**'
+      - 'scripts/**'
+      - 'src/**'
+  workflow_dispatch:
+
+jobs:
+  # build images and ensure no git diff
+  # run phpinfo and ensure correct version of xdebug is installed
+  build_and_verify:
+    name: Build and Verify
+    if: |
+      github.event_name == 'push'
+        || github.event_name == 'workflow_dispatch'
+        || (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'ci'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify builds are correct
+        run: |
+          make clean
+          make generate
+          ./scripts/git-has-changes.sh
+      - name: Build docker images
+        run: |
+          make build
+      - name: Verify docker images
+        run: |
+          ./scripts/test-all-images.sh
