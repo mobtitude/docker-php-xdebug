@@ -32,15 +32,9 @@ for i in ./build/*/; do
 	docker run \
 	  --volume ./scripts/test-xdebug-install.php:/app/test-xdebug-install.php \
 	  --workdir /app \
-	  $image
+	  --entrypoint php \
+	  "${image}" test-xdebug-install.php
 
-	
-	# Builds image and check for return code
-	if docker build --pull -t "${image}" "./build/${version}"; then
-		build_done+=( "${image}" )
-	else
-		echo "${text_bold}${text_red}* ERROR when building ${image} ${text_normal}"
-		build_failed+=( "${image}" )
-	fi
+	exit 0
 done
 
