@@ -25,8 +25,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  # build images and ensure no git diff
-  # run phpinfo and ensure correct version of xdebug is installed
   build_and_verify:
     name: Build and Verify
     if: |
