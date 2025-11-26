@@ -34,7 +34,7 @@ for i in ./build/*/; do
 	echo "${text_bold}* Building ${image} ${text_normal}"
 
 	# Builds image and check for return code
-	if [ "$(docker build --pull -t "${image}" "./build/${version}")" -eq 0 ]; then
+	if ! docker build --pull -t "${image}" "./build/${version}"; then
 		echo "${text_bold}${text_red}* ERROR when building ${image} ${text_normal}"
 		exit 1
 	fi
@@ -46,7 +46,5 @@ for i in ./build/*/; do
 	  --workdir /app \
 	  --entrypoint php \
 	  "${image}" test-xdebug-install.php
-
-	exit 0
 done
 

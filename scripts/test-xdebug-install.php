@@ -1,21 +1,20 @@
 <?php
 
-function testPhpinfo() {
-    ob_start();
-    phpinfo();
-    $phpinfo = ob_get_flush();
+function checkExtensionLoaded() {
+    if (!extension_loaded('xdebug')) {
+        exit(1);
+    }
 }
 
-function testVardump() {
-
+function checkXdebugIsDebuggerActive() {
+    if (!function_exists('xdebug_is_debugger_active')) {
+        exit(1);
+    }
+    $result = xdebug_is_debugger_active();
+    if (!is_bool($result)) {
+        exit(1);
+    }
 }
 
-function testXdebugIsDebuggerActive() {
-    // xdebug_is_debugger_active
-    // https://xdebug.org/docs/all_functions#xdebug_is_debugger_active
-}
-
-
-
-
-// https://stackoverflow.com/questions/14046501/check-if-xdebug-is-working
+checkExtensionLoaded();
+checkXdebugIsDebuggerActive();
