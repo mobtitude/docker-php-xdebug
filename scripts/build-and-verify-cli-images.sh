@@ -26,6 +26,18 @@ text_normal=$(tput sgr0)
 for i in ./build/*/; do
 	version=$(basename "$i");
 	image="${image_name}:${version}"
+
+	if [ "$version" == "${version%"cli"*}" ]; then
+      continue
+  fi
+
+	echo "${text_bold}* Building ${image} ${text_normal}"
+
+	# Builds image and check for return code
+	if [ "$(docker build --pull -t "${image}" "./build/${version}")" -eq 0 ]; then
+		echo "${text_bold}${text_red}* ERROR when building ${image} ${text_normal}"
+		exit 1
+	fi
 	
 	echo "${text_bold}* Testing ${image} ${text_normal}"
 
