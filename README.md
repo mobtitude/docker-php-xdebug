@@ -1,3 +1,5 @@
+[![Pipes](https://github.com/mobtitude/docker-php-xdebug/actions/workflows/pipes.yaml/badge.svg)](https://github.com/mobtitude/docker-php-xdebug/actions/workflows/pipes.yaml)
+
 About this repo
 ===============
 This repository contains Dockerfiles to build PHP images with `xdebug` installed and configured to run with modern IDEs like phpStorm.
