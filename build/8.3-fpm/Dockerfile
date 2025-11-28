@@ -1,5 +1,5 @@
 FROM php:8.3-fpm
-MAINTAINER Przemek Szalko <przemek@mobtitude.com>
+LABEL org.opencontainers.image.authors="Przemek Szalko <przemek@mobtitude.com>"
 
 # php intl extension
 RUN apt-get update \
