@@ -34,7 +34,7 @@ for i in ./build/*/; do
 	echo "${text_bold}* Building ${image} ${text_normal}"
 	
 	# Builds image and check for return code
-	if docker build --pull -t "${image}" "./build/${version}"; then
+	if docker buildx build --push --platform linux/arm64,linux/amd64 -t "${image}" "./build/${version}"; then
 		build_done+=( "${image}" )
 	else
 		echo "${text_bold}${text_red}* ERROR when building ${image} ${text_normal}"
