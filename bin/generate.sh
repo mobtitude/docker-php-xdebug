@@ -15,7 +15,7 @@ php_docker_suffix=( "cli" "apache" "fpm" )
 # PHP_VERSION => XDEBUG_VERSION
 declare -A xdebug_versions
 xdebug_versions=(
-    ["8.4"]="xdebug-3.3.1"
+    ["8.4"]="xdebug-3.4.5"
     ["8.3"]="xdebug-3.3.1"
     ["8.2"]="xdebug-3.3.1"
     ["8.1"]="xdebug-3.1.3"
