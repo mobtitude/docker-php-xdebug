@@ -22,6 +22,20 @@ The only difference is that, instead of downloading official Docker PHP image, y
 
 Supported tags:
 
+* mobtitude/php-xdebug:8.1-apache
+* mobtitude/php-xdebug:8.1-cli
+* mobtitude/php-xdebug:8.1-fpm
+* mobtitude/php-xdebug:8.2-apache
+* mobtitude/php-xdebug:8.2-cli
+* mobtitude/php-xdebug:8.2-fpm
+* mobtitude/php-xdebug:8.3-apache
+* mobtitude/php-xdebug:8.3-cli
+* mobtitude/php-xdebug:8.3-fpm
+* mobtitude/php-xdebug:8.4-apache
+* mobtitude/php-xdebug:8.4-cli
+* mobtitude/php-xdebug:8.4-fpm
+
+Deprecated tags (they are available in docker hub, but no further updates will be provided):
 * mobtitude/php-xdebug:5.6-apache
 * mobtitude/php-xdebug:5.6-cli
 * mobtitude/php-xdebug:5.6-fpm
@@ -34,15 +48,7 @@ Supported tags:
 * mobtitude/php-xdebug:7.2-apache
 * mobtitude/php-xdebug:7.2-cli
 * mobtitude/php-xdebug:7.2-fpm
-* mobtitude/php-xdebug:8.1-apache
-* mobtitude/php-xdebug:8.1-cli
-* mobtitude/php-xdebug:8.1-fpm
-* mobtitude/php-xdebug:8.2-apache
-* mobtitude/php-xdebug:8.2-cli
-* mobtitude/php-xdebug:8.2-fpm
-* mobtitude/php-xdebug:8.3-apache
-* mobtitude/php-xdebug:8.3-cli
-* mobtitude/php-xdebug:8.3-fpm
+
 
 Build from source
 -------------------
